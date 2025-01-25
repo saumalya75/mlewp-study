@@ -1,10 +1,10 @@
 #BASED ON EXAMPLE FROM MLFLOW DOCS
 # https://github.com/mlflow/mlflow/blob/master/examples/prophet/train.py
 import pandas as pd
-from fbprophet import Prophet
+from prophet import Prophet
 
-from fbprophet.diagnostics import cross_validation
-from fbprophet.diagnostics import performance_metrics
+from prophet.diagnostics import cross_validation
+from prophet.diagnostics import performance_metrics
 
 import mlflow
 import mlflow.pyfunc
@@ -19,7 +19,7 @@ class FbProphetWrapper(mlflow.pyfunc.PythonModel):
         super().__init__()
 
     def load_context(self, context):
-        from fbprophet import Prophet
+        from prophet import Prophet
 
         return
 
@@ -51,7 +51,7 @@ def train_predict(df_all_data, df_all_train_index, seasonality_params=seasonalit
         model.fit(df_train)
 
         # Evaluate Metrics
-        df_cv = cross_validation(model, initial="730 days", period="180 days", horizon="365 days")
+        df_cv = cross_validation(model, initial="730 days", period="100 days", horizon="2 days")
         df_p = performance_metrics(df_cv)
 
         # Print out metrics
@@ -74,10 +74,10 @@ def train_predict(df_all_data, df_all_train_index, seasonality_params=seasonalit
 
 if __name__ == "__main__":
     # Read in Data
-    df = pd.read_csv('../../Chapter01/forecasting-api/data/demand-forecasting-kernels-only/train.csv')
-    df.rename(columns={'date': 'ds', 'sales': 'y'}, inplace=True)
+    df = pd.read_csv('../../Chapter01/forecasting/rossman_store_data/train.csv')
+    df.rename(columns={'Date': 'ds', 'Sales': 'y'}, inplace=True)
     # Filter out store and item 1
-    df_store1_item1 = df[(df['store'] == 1) & (df['item'] == 1)].reset_index(drop=True)
+    df_store1_item1 = df[(df['Store'] == 1) & (df['Open'] == 1)].reset_index(drop=True)
 
     train_index = int(0.8 * df_store1_item1.shape[0])
     predicted, df_train, df_test = train_predict(
