@@ -30,7 +30,7 @@ class FbProphetWrapper(mlflow.pyfunc.PythonModel):
 
 seasonality = {
     'yearly': True,
-    'weekly': True,
+    'weekly': False,
     'daily': True
 }
 
@@ -61,7 +61,7 @@ def train_predict(df_all_data, df_all_train_index, seasonality_params=seasonalit
         # Log parameter, metrics, and model to MLflow
         mlflow.log_metric("rmse", df_p.loc[0, "rmse"])
 
-        mlflow.pyfunc.log_model("model", python_model=FbProphetWrapper(model))
+        mlflow.pyfunc.log_model("WrappedProphetModel", python_model=FbProphetWrapper(model))
         print(
             "Logged model with URI: runs:/{run_id}/model".format(
                 run_id=mlflow.active_run().info.run_id
@@ -85,3 +85,4 @@ if __name__ == "__main__":
         df_all_train_index=train_index,
         seasonality_params=seasonality
     )
+    print(predicted)
