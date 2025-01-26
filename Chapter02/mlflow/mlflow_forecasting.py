@@ -30,7 +30,7 @@ class FbProphetWrapper(mlflow.pyfunc.PythonModel):
 
 seasonality = {
     'yearly': True,
-    'weekly': False,
+    'weekly': True,
     'daily': True
 }
 
