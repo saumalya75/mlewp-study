@@ -2,9 +2,10 @@ name: Run unit tests
 on:
   workflow_call:
 jobs:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Test with pytest
-        run: |
-          pytest
-        working-directory: Chapter02
+    unit-tests:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Test with pytest
+          run: |
+            pytest
+          working-directory: Chapter02
