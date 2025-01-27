@@ -10,4 +10,4 @@ jobs:
   tests:
     needs:
       - linting
-    uses: ./.github/workflows/linting.yml
+    uses: ./.github/workflows/unit_tests.yml
