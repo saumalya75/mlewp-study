@@ -11,7 +11,7 @@ jobs:
         - uses: actions/checkout@v3
 
         - name: Build Env
-          uses: ./.github/workflows/python_build/@main
+          uses: ./.github/workflows/python_build/
           with:
             PYTHON_VERSION: ${{matrix.python-version}}
 
