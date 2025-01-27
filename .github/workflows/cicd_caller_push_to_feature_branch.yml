@@ -1,0 +1,18 @@
+name: Push To Feature Branch
+on:
+  push:
+    branches:
+      - feature/*
+  workflow_dispatch:
+jobs:
+  env_build:
+    strategy:
+      matrix:
+        python-version: ["3.9", "3.10"]
+    uses: ./.github/workflows/cicd_build/python_build.yml
+    with:
+      PYTHON_VERSION: ${{matrix.python-version}}
+  tests:
+    needs:
+      - env_build
+    uses: ./.github/workflows/cicd_tests/linting.yml
