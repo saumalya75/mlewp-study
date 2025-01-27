@@ -14,7 +14,7 @@ runs:
       shell: bash
       run: |
         python -m pip install --upgrade pip
-        pip install -r ./Chapter02/requirements.txt
+        pip install -r ./Chapter02/cicd_requirements.txt
         pip install flake8 pytest
         #if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
         #if [ -f ./Chapter02/requirements.txt ]; then pip install -r ./Chapter02/requirements.txt; fi
