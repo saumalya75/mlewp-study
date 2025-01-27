@@ -1,0 +1,13 @@
+name: Push To Feature Branch
+on:
+  push:
+    branches:
+      - feature/*
+  workflow_dispatch:
+jobs:
+  linting:
+    uses: ./.github/workflows/linting.yml
+  tests:
+    needs:
+      - linting
+    uses: ./.github/workflows/unit_tests.yml

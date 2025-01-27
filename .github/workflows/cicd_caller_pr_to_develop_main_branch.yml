@@ -1,0 +1,14 @@
+name: PR to Develop or Main branch
+on:
+  pull_request:
+    branches:
+      - develop
+      - main
+  workflow_dispatch:
+jobs:
+  linting:
+    uses: ./.github/workflows/linting.yml
+  tests:
+    needs:
+      - linting
+    uses: ./.github/workflows/unit_tests.yml

@@ -174,5 +174,5 @@ cython_debug/
 
 # Exclude the data files
 *.csv
-*.txt
 *.png
+scratch/*
