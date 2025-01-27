@@ -1,6 +1,8 @@
-huggingface-hub==0.13.4
+huggingface-hub
 kaggle
 pandas
 scikit-learn
 scipy
 typing_extensions
+pytest
+joblib
