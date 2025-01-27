@@ -1,4 +1,4 @@
-huggingface-hub
+huggingface-hub==0.13.4
 kaggle
 pandas
 scikit-learn
