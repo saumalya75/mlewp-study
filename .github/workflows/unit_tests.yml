@@ -4,7 +4,14 @@ on:
 jobs:
     unit-tests:
       runs-on: ubuntu-latest
+      strategy:
+        matrix:
+          python-version: ["3.9", "3.10"]
       steps:
+        - name: Build Env
+          uses: ./.github/workflows/python_build.yml
+          with:
+            PYTHON_VERSION: ${{matrix.python-version}}
         - name: Test with pytest
           run: |
             pytest

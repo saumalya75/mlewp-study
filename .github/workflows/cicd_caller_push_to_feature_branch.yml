@@ -5,14 +5,9 @@ on:
       - feature/*
   workflow_dispatch:
 jobs:
-  env_build:
-    strategy:
-      matrix:
-        python-version: ["3.9", "3.10"]
-    uses: ./.github/workflows/python_build.yml
-    with:
-      PYTHON_VERSION: ${{matrix.python-version}}
+  linting:
+    uses: ./.github/workflows/linting.yml
   tests:
     needs:
-      - env_build
+      - linting
     uses: ./.github/workflows/linting.yml

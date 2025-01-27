@@ -4,7 +4,15 @@ on:
 jobs:
   linting:
     runs-on: ubuntu-latest
+    strategy:
+        matrix:
+            python-version: ["3.9", "3.10"]
     steps:
+        - name: Build Env
+          uses: ./.github/workflows/python_build.yml
+          with:
+            PYTHON_VERSION: ${{matrix.python-version}}
+
         - uses: actions/checkout@v3
         - name: Lint with flake8 on Chapter01
           run: |
