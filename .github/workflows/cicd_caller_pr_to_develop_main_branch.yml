@@ -10,10 +10,10 @@ jobs:
     strategy:
       matrix:
         python-version: ["3.9", "3.10"]
-    uses: ./.github/cicd_build/python_build.yml@main
+    uses: ./.github/workflows/cicd_build/python_build.yml@main
     with:
       PYTHON_VERSION: ${{matrix.python-version}}
   tests:
     needs:
       - env_build
-    uses: ./.github/cicd_tests/unit_tests.yml@main
+    uses: ./.github/workflows/cicd_tests/unit_tests.yml@main
