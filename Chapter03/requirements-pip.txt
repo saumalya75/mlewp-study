@@ -1,0 +1,14 @@
+huggingface-hub
+kaggle
+numpy==1.21.5
+pandas
+scikit-learn
+scipy
+typing_extensions
+pytest
+joblib
+swig
+auto-sklearn
+jupyter
+mlflow
+matplotlib
