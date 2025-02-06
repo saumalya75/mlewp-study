@@ -20,7 +20,7 @@ jobs:
         uses: ./.github/workflows/python_build/
         with:
           PYTHON_VERSION: ${{matrix.python-version}}
-      - name: Linting
+      - name: Run Lintings
         uses: ./.github/workflows/lintings
-      - name: Tests
+      - name: Run Unit Tests
         uses: ./.github/workflows/unit_tests
