@@ -1,0 +1,22 @@
+name: PR to Develop or Main branch
+on:
+  pull_request:
+    branches:
+      - develop
+  workflow_dispatch:
+jobs:
+  develop-linting-tests:
+    runs-on: ubuntu-latest
+    strategy:
+        matrix:
+            python-version: ["3.9", "3.10"]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build Env
+        uses: ./.github/workflows/python_build/
+        with:
+          PYTHON_VERSION: ${{matrix.python-version}}
+      - name: Run Lintings
+        uses: ./.github/workflows/lintings
+      - name: Run Unit Tests
+        uses: ./.github/workflows/unit_tests

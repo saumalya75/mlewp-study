@@ -1,9 +1,5 @@
 name: PR to Develop or Main branch
 on:
-  pull_request:
-    branches:
-      - develop
-      - main
   push:
     branches:
       - develop
