@@ -16,3 +16,4 @@ jobs:
         run: |
           echo "Deploy Approval"
           echo ${{github.event_name}}
+          echo ${{github.ref_name}}
