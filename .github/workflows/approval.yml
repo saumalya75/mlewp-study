@@ -4,7 +4,7 @@ on:
 jobs:
   approval:
     runs-on: ubuntu-latest
-    # if: ${{github.event_name == 'push'}}
+    # if: ${{github.event_name == 'push' || github.event_name == 'pull_request'}}
     environment: |-
       ${{
         github.ref_name == 'main' && 'deploy-higher-environment'
