@@ -1,0 +1,9 @@
+name: Run Unit Tests
+runs:
+  using: composite
+  steps:
+      - name: Lint with flake8 on Chapter02
+        shell: bash
+        run: |
+          pytest
+        working-directory: Chapter02

@@ -4,11 +4,28 @@ on:
     branches:
       - develop
       - main
+  push:
+    branches:
+      - develop
+      - main
   workflow_dispatch:
 jobs:
-  linting:
-    uses: ./.github/workflows/linting.yml
-  tests:
+  approval:
+    uses: ./.github/workflows/approval.yml
+  linting-tests:
+    runs-on: ubuntu-latest
     needs:
-      - linting
-    uses: ./.github/workflows/unit_tests.yml
+      - approval
+    strategy:
+        matrix:
+            python-version: ["3.9", "3.10"]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build Env
+        uses: ./.github/workflows/python_build/
+        with:
+          PYTHON_VERSION: ${{matrix.python-version}}
+      - name: Run Lintings
+        uses: ./.github/workflows/lintings
+      - name: Run Unit Tests
+        uses: ./.github/workflows/unit_tests
