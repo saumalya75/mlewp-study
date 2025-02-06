@@ -2,11 +2,10 @@ name: PR to Develop or Main branch
 on:
   pull_request:
     branches:
-      - develop
       - main
   workflow_dispatch:
 jobs:
-  linting-tests:
+  main-linting-tests:
     runs-on: ubuntu-latest
     strategy:
         matrix:
