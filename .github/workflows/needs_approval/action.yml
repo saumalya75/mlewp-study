@@ -1,17 +1,14 @@
 name: Needs Approval
 runs:
   using: composite
-  if: ${{github.event_name == 'push'}}
-  runs-on: ubuntu-latest
-  environment: |-
-    ${{
-      github.ref_name == 'main' && 'deploy-higher-environment'
-      || github.ref_name == 'develop' && 'deploy-higher-environment'
-      || 'deploy-dev'
-    }}
-  # - name: Checkout
-  #   uses: actions/checkout@v3
-  - name: Install dependencies
+  - name: Dummy Step
+    if: ${{github.event_name == 'push'}}
+    environment: |-
+      ${{
+        github.ref_name == 'main' && 'deploy-higher-environment'
+        || github.ref_name == 'develop' && 'deploy-higher-environment'
+        || 'deploy-dev'
+      }}
     shell: bash
     run: |
       echo "Deploy Approval"
