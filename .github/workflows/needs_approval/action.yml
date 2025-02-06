@@ -1,0 +1,19 @@
+name: Build Environment
+inputs:
+  PYTHON_VERSION:
+    required: true
+    type: string
+runs:
+  using: composite
+  if: ${{github.event_name == 'push'}}
+  runs-on: ubuntu-latest
+  environment: |-
+    ${{
+      github.ref_name == 'main' && 'deploy-higher-environment'
+      || github.ref_name == 'develop' && 'deploy-higher-environment'
+      || 'deploy-dev'
+    }}
+  steps:
+    - name: Dummy Step
+      run: |
+        echo "Deploy Approval"

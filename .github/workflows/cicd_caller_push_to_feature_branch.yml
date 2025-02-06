@@ -5,6 +5,11 @@ on:
       - feature/*
   workflow_dispatch:
 jobs:
+  approval:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build Env
+        uses: ./.github/workflows/needs_approval/
   linting:
     uses: ./.github/workflows/linting.yml
   tests:
