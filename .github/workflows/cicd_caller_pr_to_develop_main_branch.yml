@@ -6,7 +6,11 @@ on:
       - main
   workflow_dispatch:
 jobs:
+  approval:
+    uses: ./.github/workflows/approval.yml
   linting:
+    needs:
+      - approval
     uses: ./.github/workflows/linting.yml
   tests:
     needs:
