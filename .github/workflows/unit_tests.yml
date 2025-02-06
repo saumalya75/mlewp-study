@@ -8,7 +8,7 @@ jobs:
       #   matrix:
       #     python-version: ["3.9", "3.10"]
       steps:
-        # - uses: actions/checkout@v3
+        - uses: actions/checkout@v3
         # - name: Build Env
         #   uses: ./.github/workflows/python_build/
         #   with:
