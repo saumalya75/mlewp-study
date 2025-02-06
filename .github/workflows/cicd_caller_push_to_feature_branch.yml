@@ -7,10 +7,17 @@ on:
 jobs:
   approval:
     runs-on: ubuntu-latest
+    if: ${{github.event_name == 'push'}}
+    environment: |-
+      ${{
+        github.ref_name == 'main' && 'deploy-higher-environment'
+        || github.ref_name == 'develop' && 'deploy-higher-environment'
+        || 'deploy-dev'
+      }}
     steps:
-      - uses: actions/checkout@v3
-      - name: Needs Approval
-        uses: ./.github/workflows/needs_approval/
+      - name: Dummy Step
+        run: |
+          echo "Deploy Approval"
   linting:
     needs:
       - approval
