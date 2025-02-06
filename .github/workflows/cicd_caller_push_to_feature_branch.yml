@@ -8,10 +8,11 @@ jobs:
   approval:
     uses: ./.github/workflows/approval.yml
   linting:
+    runs-on: ubuntu-latest
     needs:
       - approval
-    uses: ./.github/workflows/linting.yml
-  tests:
-    needs:
-      - linting
-    uses: ./.github/workflows/unit_tests.yml
+    steps:
+      - name: Linting
+        uses: ./.github/workflows/linting.yml
+      - name: Tests
+        uses: ./.github/workflows/unit_tests.yml
