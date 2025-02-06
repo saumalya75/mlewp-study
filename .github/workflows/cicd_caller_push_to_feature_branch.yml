@@ -21,6 +21,6 @@ jobs:
         with:
           PYTHON_VERSION: ${{matrix.python-version}}
       - name: Linting
-        uses: ./.github/workflows/linting
+        uses: ./.github/workflows/lintings
       - name: Tests
-        uses: ./.github/workflows/unit_tests.yml
+        uses: ./.github/workflows/unit_tests
