@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Needs Approval
-        uses: ./.github/workflows/needs_approval/
+        uses: ./.github/workflows/python_build/
   linting:
     needs:
       - approval
