@@ -1,13 +1,17 @@
 name: PR to Develop or Main branch
 on:
-  pull_request:
+  push:
     branches:
       - develop
       - main
   workflow_dispatch:
 jobs:
+  approval:
+    uses: ./.github/workflows/approval.yml
   linting-tests:
     runs-on: ubuntu-latest
+    needs:
+      - approval
     strategy:
         matrix:
             python-version: ["3.9", "3.10"]
