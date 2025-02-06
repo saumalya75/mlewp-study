@@ -1,21 +1,20 @@
-name: Build Environment
-inputs:
-  PYTHON_VERSION:
-    required: true
-    type: string
+name: Needs Approval
 runs:
   using: composite
-  # if: ${{github.event_name == 'push'}}
-  # runs-on: ubuntu-latest
-  # environment: |-
-  #   ${{
-  #     github.ref_name == 'main' && 'deploy-higher-environment'
-  #     || github.ref_name == 'develop' && 'deploy-higher-environment'
-  #     || 'deploy-dev'
-  #   }}
-  steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-    - name: Dummy Step
-      run: |
-        echo "Deploy Approval"
+  if: ${{github.event_name == 'push'}}
+  runs-on: ubuntu-latest
+  environment: |-
+    ${{
+      github.ref_name == 'main' && 'deploy-higher-environment'
+      || github.ref_name == 'develop' && 'deploy-higher-environment'
+      || 'deploy-dev'
+    }}
+  - name: Checkout
+    uses: actions/checkout@v3
+  - name: Install dependencies
+    shell: bash
+    run: |
+      echo "Deploy Approval"
+    # - name: Dummy Step
+    #   run: |
+    #     echo "Deploy Approval"
