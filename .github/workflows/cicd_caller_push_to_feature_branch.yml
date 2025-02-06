@@ -8,8 +8,9 @@ jobs:
   approval:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - name: Needs Approval
-        uses: ./.github/workflows/python_build/
+        uses: ./.github/workflows/needs_approval/
   linting:
     needs:
       - approval
