@@ -14,6 +14,8 @@ runs:
       || 'deploy-dev'
     }}
   steps:
+    - name: Checkout
+      uses: actions/checkout@v3
     - name: Dummy Step
       run: |
         echo "Deploy Approval"

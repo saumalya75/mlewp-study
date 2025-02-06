@@ -11,6 +11,8 @@ jobs:
       - name: Build Env
         uses: ./.github/workflows/needs_approval/
   linting:
+    needs:
+      - approval
     uses: ./.github/workflows/linting.yml
   tests:
     needs:
