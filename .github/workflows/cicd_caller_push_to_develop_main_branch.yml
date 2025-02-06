@@ -1,8 +1,9 @@
-name: Push To Feature Branch
+name: PR to Develop or Main branch
 on:
   push:
     branches:
-      - feature/*
+      - develop
+      - main
   workflow_dispatch:
 jobs:
   approval:

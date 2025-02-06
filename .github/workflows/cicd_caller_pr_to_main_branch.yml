@@ -1,16 +1,12 @@
-name: Push To Feature Branch
+name: PR to Develop or Main branch
 on:
-  push:
+  pull_request:
     branches:
-      - feature/*
+      - main
   workflow_dispatch:
 jobs:
-  approval:
-    uses: ./.github/workflows/approval.yml
-  linting-tests:
+  main-linting-tests:
     runs-on: ubuntu-latest
-    needs:
-      - approval
     strategy:
         matrix:
             python-version: ["3.9", "3.10"]
