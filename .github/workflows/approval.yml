@@ -4,7 +4,7 @@ on:
 jobs:
   approval:
     runs-on: ubuntu-latest
-    if: ${{github.event_name == 'push'}}
+    # if: ${{github.event_name == 'push'}}
     environment: |-
       ${{
         github.ref_name == 'main' && 'deploy-higher-environment'
@@ -15,3 +15,4 @@ jobs:
       - name: Dummy Step
         run: |
           echo "Deploy Approval"
+          echo ${{github.event_name}}
