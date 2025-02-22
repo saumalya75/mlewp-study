@@ -4,6 +4,10 @@ from sklearn.linear_model import RidgeClassifier
 from sklearn import metrics
 from sklearn.datasets import load_wine
 from sklearn.pipeline import make_pipeline
+import alibi
+import alibi_detect
+import shap
+import evidently
 
 X, y = load_wine(return_X_y=True)
 
@@ -11,7 +15,6 @@ X, y = load_wine(return_X_y=True)
 X_train, X_test, y_train, y_test = train_test_split(
     X
     , y
-    , test_size=0.30
     , test_size=0.30
     , random_state=42
 )
